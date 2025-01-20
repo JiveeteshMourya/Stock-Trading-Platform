@@ -11,6 +11,9 @@ const Holdings = () => {
       .then((res) => {
         console.log("holdings data fetched successfully from server");
         setAllHoldings(res.data);
+      })
+      .catch((err) =>  {
+        console.log(err);
       });
   }, []);
 
