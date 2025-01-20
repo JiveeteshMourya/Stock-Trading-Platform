@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { server_url } from "../environment";
+
 function Navbar() {
   const navigate = useNavigate();
   const [cookies, setCookies, removeCookie] = useCookies([]);
@@ -15,24 +17,24 @@ function Navbar() {
       if ( cookies.token === undefined ) {
         navigate("/");
       }
-      // const { data } = await axios.post(
-      //   "http://localhost:3002/login",
-      //   {},
-      //   { withCredentials: true }
-      // );
-      // const { status, user } = data;
-      // setUsername(user);
-      // return status
-      //   ? toast(`Hello ${user}`, {
-      //   position: "top-right",
-      //   })
-      //   : (removeCookie("token"), navigate("/"));
+      const { data } = await axios.post(
+        `${server_url}/login`,
+        {},
+        { withCredentials: true }
+      );
+      const { status, user } = data;
+      setUsername(user);
+      return status
+        ? toast(`Hello ${user}`, {
+        position: "top-right",
+        })
+        : (removeCookie("token"), navigate("/"));
     };
     verifyCookie();
   }, [cookies]);
   const Logout = () => {
     // console.log("removing token", cookies.token);
-    // cookies.token = undefined;
+    cookies.token = undefined;
     removeCookie("token");
     navigate("/");
     // verifyCookie();

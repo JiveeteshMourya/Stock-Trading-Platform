@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
 // import { positions } from "../data/data";
 import axios from "axios";
+import server_url from "../environment";
 
 const Positions = () => {
   let [allPositions, setAllPositions] = useState([]);
   useEffect(() => {
-    axios.get("https://stock-trading-platform-44mg.onrender.com/allPositions")
+    axios.get(`${server_url}/allPositions`)
       .then((res) => {
         setAllPositions(res.data);
       });

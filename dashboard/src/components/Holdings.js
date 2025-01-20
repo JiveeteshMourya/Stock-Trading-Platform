@@ -2,11 +2,12 @@ import React, {useState, useEffect} from "react";
 // import {holdings} from "../data/data";
 import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
+import server_url from "../environment";
 
 const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
   useEffect(() => {
-    axios.get("https://stock-trading-platform-44mg.onrender.com/allHoldings")
+    axios.get(`${server_url}/allHoldings`)
       .then((res) => {
         console.log("holdings data fetched successfully from server");
         setAllHoldings(res.data);
