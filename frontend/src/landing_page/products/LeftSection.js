@@ -1,6 +1,7 @@
 import React from 'react';
 
 function LeftSection({imageURL, productName, productDescription, tryDemo, learnMore, googlePlay, appStore}) {
+    console.log(tryDemo, learnMore);
     return ( 
         <div className='container'>
             <div className='row mb-2 mt-2'>
