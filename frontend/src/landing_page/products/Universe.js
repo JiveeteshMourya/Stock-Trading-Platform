@@ -7,7 +7,7 @@ function Universe() {
                 <h1>The Zerodha Universe</h1>
                 <p>Extend your trading and investment experiences even further with our partner platforms</p>
                 <div className='col-4 p-3 mt-5'>
-                    <img src="media/images/smallcaselogo.png"/>
+                    <img src="media/images/smallcaseLogo.png"/>
                     <p className='text-small text-muted'>Thematic investing platform</p>
                 </div>
                 <div className='col-4 p-3 mt-5'>
