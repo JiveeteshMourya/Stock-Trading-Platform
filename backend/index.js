@@ -14,8 +14,18 @@ const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 
 const app = express();
+const allowedOrigins = [
+  "https://dashboardzerodhaclone.onrender.com",
+  "https://frontendzerodhaclone.onrender.com",
+]
 app.use(cors({
-  origin: ["https://stock-trading-platform-44mg.onrender.com"],
+  origin: (origin, callback) => {
+    if(allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
